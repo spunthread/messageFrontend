@@ -17,7 +17,7 @@ function Navbar({toggleSidebar,setToggleSidebar}) {
      
       <div className="flex justify-between gap-14 items-center">
           <span className="logo text-white">Message App</span>
-          <button onClick={()=>setToggleSidebar(!toggleSidebar)} id="toggle-btn">
+          <button onClick={()=>setToggleSidebar(!toggleSidebar)} className="hidden sm:block " id="toggle-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"

@@ -7,6 +7,8 @@ import Boards from './pages/Boards';
 import DeAuth from './components/Deauth';
 import Auth from './components/Auth';
 import Login from './pages/Login';
+import SingleBoard from './pages/SingleBoard';
+import InviteManagement from './pages/InviteManagement';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route element={<StructuredLayout />}>  
              <Route path="/dashboard" element={<Dashboard />} />
              <Route path="/boards" element={<Boards />} />
+             <Route path="/single-board" element={<SingleBoard />} />
+             <Route path="/invite-management" element={<InviteManagement />} />
             
           </Route>
           <Route path="*" element={<p>Not Found</p>} />
