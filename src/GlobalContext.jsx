@@ -1,56 +1,47 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer } from "react";
 
 // Create context
 export const GlobalContext = createContext();
 
 // Default state
 const defaultState = {
-  isLoad: false,
-  token: null,
-  loading: false,
-  error: null, // Include error in the default state
-  extra: null,
+  token: "",
+  name: "",
+  emails: [],
+  picture: "",
 };
 
 // Reducer
-export const authReducer = (state, action) => {
+const authReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case "LOGIN": {
       return {
         ...state,
-        token: payload, // Handle token for sign-in
-        loading: false,
+        ...payload,
       };
     }
 
     case "LOGOUT": {
-      return { ...defaultState };
+      return defaultState;
     }
-   
-  
+
     default:
       return state;
   }
 };
 
-// Custom hook to use the context
-export const useGlobalContext = () => useContext(GlobalContext);
-
-export const GlobalProvider = ({ children }) => {
+export function GlobalProvider({ children }) {
   const [auth, dispatch] = useReducer(authReducer, defaultState);
-
 
   return (
     <GlobalContext.Provider
       value={{
         auth,
         dispatch,
-     
-      }}
-    >
+      }}>
       {children}
     </GlobalContext.Provider>
   );
-};
+}
